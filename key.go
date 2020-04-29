@@ -159,3 +159,7 @@ func (key *Key) isKeyEvent() bool {
 func (key *Key) IsShift() bool {
 	return strings.Contains(keyCodeToString[key.Code], "SHIFT")
 }
+
+func (key *Key) IsBackSpace() bool {
+	return key.Code == 14
+}
