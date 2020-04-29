@@ -1,6 +1,9 @@
 package gokeyboard
 
-import "syscall"
+import (
+	"strings"
+	"syscall"
+)
 
 var keyCodeToString = map[uint16]string{
 	1:   "ESC",
@@ -150,4 +153,9 @@ func (key *Key) IsReleased() bool {
 // Private method to check if its a key event.
 func (key *Key) isKeyEvent() bool {
 	return key.Type == 0x01
+}
+
+// Will check if the key is shift, for easy case handling
+func (key *Key) IsShift() bool {
+	return strings.Contains(keyCodeToString[key.Code], "SHIFT")
 }
